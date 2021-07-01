@@ -1,23 +1,22 @@
 const app = new Vue({
     el: '#vueApp',
     data: {
-        Submit: 'Submits',
         currentRoute: 'form',
         currentFamily:{
             members: []
-        }
+        },
+        familyDataSet: []
     },
     methods: {
         AddMember: function(){
             this.currentFamily.members.push({});
         },
         RemoveMember: function(i) {
-            console.log(i);
             this.currentFamily.members.splice(i, 1);
+        },
+        Submit: function(){
+            this.familyDataSet.push(this.currentFamily);
+            this.currentRoute = 'list'
         }
     }
-});
-
-$(document).ready(function(){   
-    $('#familiesListContainer').load("familiesList.html"); 
 });
